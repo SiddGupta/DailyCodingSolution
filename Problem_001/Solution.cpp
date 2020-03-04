@@ -26,7 +26,7 @@ bool isSumPossible(int *arr, int size, int sum)
     for (int i = 0; i < size; i++)
     {
         temp = sum - arr[i];
-        if (temp >= 0 && arr_set.find(temp) != arr_set.end())
+        if (temp >= 0 && arr_set.count(temp) != 0)
         {
             return true;
         }
