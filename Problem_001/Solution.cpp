@@ -1,45 +1,50 @@
+/*+ Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
+Bonus: Can you do this in one pass?
++*/
+
 #include <iostream>
 #include <unordered_set>
 
 using namespace std;
 
-bool isSumPossible(const vector<int> &arr, const int &size, const int &sum);
-void getInput(vector<int> &arr, int &size, int &sum);
+bool IsSumPossible(const vector<int> &viInput, const int &iSize, const int &iSum);
+void GetInput(vector<int> &viInput, int &iSize, int &iSum);
 
 void main()
 {
-    int size, sum;
-    vector<int> array;
-    getInput(array, size, sum);
-    cout << (isSumPossible(array, size, sum) ? "True" : "False");
+    int iSize, iSum;
+    vector<int> viInput;
+    getInput(viInput, iSize, iSum);
+    cout << (isSumPossible(viInput, iSize, iSum) ? "True" : "False");
 }
 
-void getInput(vector<int> &arr, int &size, int &sum)
+void getInput(vector<int> &viInput, int &iSize, int &iSum)
 {
     cout << "Enter the number of elements:: ";
-    cin >> size;
-    arr.reserve(size);
+    cin >> iSize;
+    viInput.reserve(iSize);
     cout << "Enter the array:: ";
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < iSize; i++)
     {
-        cin >> arr[i];
+        cin >> viInput[i];
     }
     cout << "Enter the sum:: ";
-    cin >> sum;
+    cin >> iSum;
 }
 
-bool isSumPossible(const vector<int> &arr, const int &size, const int &sum)
+bool isSumPossible(const vector<int> &viInput, const int &iSize, const int &iSum)
 {
-    int temp;
-    unordered_set<int> arr_set;
-    for (int i = 0; i < size; i++)
+    int iDiff;
+    unordered_set<int> usiDifference;
+    for (int i = 0; i < iSize; i++)
     {
-        temp = sum - arr[i];
-        if (temp >= 0 && arr_set.count(temp) != 0)
+        iDiff = iSum - viInput[i];
+        if (iDiff >= 0 && usiDifference.count(iDiff) != 0)
         {
             return true;
         }
-        arr_set.insert(arr[i]);
+        usiDifference.insert(viInput[i]);
     }
     return false;
 }
